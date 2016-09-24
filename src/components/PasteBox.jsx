@@ -19,11 +19,9 @@ var sampleInputString = x.map(function (rowArray){
 
 var PasteBox = React.createClass({
   getInitialState: function(){
-    console.log('PROPS',this.props)
     return {
       isTableMode: true,
-      editing: false,
-      inputValue: sampleInputString,
+      inputValue: (this.props.sampleData || sampleInputString),
       hovering: false,
     };
   },
@@ -45,9 +43,9 @@ var PasteBox = React.createClass({
   },
 
   handleFocus: function () {
-    if (this.state.editing === false) {
+    if (this.state.isTableMode === true) {
       this.setState({
-        editing: true
+        isTableMode: false
       }, function () {
         reactDOM.findDOMNode(this.refs["paste-box"]).select();
       });
@@ -60,11 +58,10 @@ var PasteBox = React.createClass({
     });
   },
 
-  getTableFromArrayData: function(sampleInputString){
+  getTableFromArrayData: function(inputData){
     var result = {};
     var content;
-    var arrOfJson = tsv.parse(sampleInputString);
-    // var stringedData = tsv.stringify(arrOfJson);
+    var arrOfJson = tsv.parse(inputData);
 
     result.headers = Object.keys(arrOfJson[0]).map(function (header,i) {
       return (<td className="header-underline" key={i}>{header}</td>);
@@ -89,15 +86,13 @@ var PasteBox = React.createClass({
   render: function(){
 
     var content;
-    var arrOfJson = tsv.parse(sampleInputString);
-    var stringedData = tsv.stringify(arrOfJson);
 
     if (this.state.isTableMode) {
       //make a table and insert the json data
       var tableData = this.getTableFromArrayData(this.state.inputValue);
       var tag = this.state.hovering ? 
         (<span className="user-message">Click to paste your data</span>) : null;
-        
+
       content = (
         <div className="example-data-table">
           <table className="add-opacity table-bordered table-width" onClick={this.handleClick}>
