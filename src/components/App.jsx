@@ -20,7 +20,7 @@ var sampleInputString = x.map(function (rowArray){
 var APP = React.createClass({
   
 
-  doFancyThingWithDataPastedByUser = function(stuff){
+  doFancyThingWithDataPastedByUser: function(stuff){
     console.log(stuff);
     // tableActions.sendUserDataToServer(stuff)
   },

@@ -4,6 +4,7 @@ var React = require('react');
 var reactDOM = require('react-dom');
 var tsv = require('tsv');
 
+//default if none passed in
 var x = [
  ["Street Address","City","State","Post Code","Name","Phone Number","URL"],
  ["225 George St","Sydney","NSW","2000","Deloitte","(415) 547-0254","www.deloitte.com"],
