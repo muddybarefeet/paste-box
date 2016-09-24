@@ -2,6 +2,7 @@ var React = require('react');
 
 var PasteBox = require('./PasteBox.jsx');
 
+//change to what default you want
 var x = [
  ["Street Address","City","State","Post Code","Name","Phone Number","URL"],
  ["225 George St","Sydney","NSW","2000","Deloitte","(415) 547-0254","www.deloitte.com"],
@@ -15,13 +16,21 @@ var sampleInputString = x.map(function (rowArray){
   return rowArray.join('\t');
 }).join('\n');
 
+
 var APP = React.createClass({
   
+
+  doFancyThingWithDataPastedByUser = function(stuff){
+    console.log(stuff);
+    // tableActions.sendUserDataToServer(stuff)
+  },
+
   render: function(){
     return (
       <div className="container">
         <PasteBox
           sampleData={sampleInputString}
+          cb={this.doFancyThingWithDataPastedByUser}
         />
       </div>
     );

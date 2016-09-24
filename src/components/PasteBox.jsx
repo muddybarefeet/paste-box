@@ -77,9 +77,22 @@ var PasteBox = React.createClass({
     return result;
   },
 
+  formatDataForParent: function(){
+    var result = {header: [], data: []};
+    var jsonPasted = tsv.parse(this.state.inputValue);
+    result.header = Object.keys(jsonPasted[0]);
+    result.data = jsonPasted
+    return result;
+  },
+
   offFocus: function () {
+    var that = this;
     this.setState({
       isTableMode:true
+    }, function(){
+      if(this.props.cb){
+        this.props.cb(that.formatDataForParent());
+      }
     });
   },
   
