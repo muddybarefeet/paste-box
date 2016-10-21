@@ -140,15 +140,18 @@ var PasteBox = React.createClass({
 
     return (
 
-      <div
-        className="table-container"
-        onClick={this.handleFocus}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        style={hoverStyle}
-        onBlur={this.offFocus}
-      >
-        {content}
+      <div>
+        <div className="page-spacing"></div>
+        <div
+          className="table-container"
+          onClick={this.handleFocus}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          style={hoverStyle}
+          onBlur={this.offFocus}
+        >
+          {content}
+        </div>
       </div>
 
     );

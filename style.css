@@ -37,7 +37,7 @@ td {
 .user-message {
   text-align: center;
   position: absolute;
-  top: 60px;
+  top: 100px;
   font-weight: 700;
   font-size: 20px;
   color: #666;
@@ -47,6 +47,10 @@ td {
 
 .add-opacity:hover {
   opacity: 0.4;
+}
+
+.page-spacing {
+  height:50px;
 }
 
 
